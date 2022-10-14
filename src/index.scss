@@ -6,7 +6,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #fff;
 }
-
+*{
+  font-family: 'Inter', system-ui;
+}
 .wrapper {
 background: #FFFFFF;
 box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04);
@@ -58,8 +60,28 @@ li{
 
 .content{
   margin: 0;
-  padding-left: 45px;
+  padding:0 45px;
+  margin-bottom: 40px;
 }
+.inputAll{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-block{
+  border-radius: 10px;
+  border: 1px solid #f3f3f3;
+  padding: 10px 14px;
+  
+  input{
+    border: 0;
+    margin-left: 15px;
+    font-size: 15px;
+    outline: none;
+    width: 200px;
+  }
+}
+
 .allsneakers {
   margin-bottom: 40px;
 }
@@ -68,14 +90,22 @@ li{
   padding: 30px;
   width: 150px;
   border-radius: 40px;
-  margin-right: 15px;
-  margin-left: 40px;
-  margin-top: 20px;
+  margin: 0 8px;
+  transition: box-shadow 0.2s ease-in-out;
+  transform: 0.3s ease-in-out;
   img{
     display: block;
-    margin: 0 auto;
+    // margin: 0 auto;
   }
-
+  &:hover{
+    box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.06);
+    transform: translateY(-5px);
+    
+  }
+  .favorite{
+    position: absolute;
+    cursor: pointer;
+  }
 }
 
 .cardButton{
@@ -113,4 +143,116 @@ h5 {
 .sneakers{
   display: flex;
   flex-wrap: wrap;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+.rightside{
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  
+}
+.overlay{
+  position: absolute;
+  width: 385px;
+  height: 100%;
+  right: 0;
+  background: #FFFFFF;
+  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+  // display: flex;
+  // flex-direction: column;
+  h2{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  img{
+    margin-right: 35px;
+    cursor: pointer;
+  }
+}
+.cartitem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #F3F3F3;
+  border-radius: 20px;
+  margin: 20px 30px;
+  min-height: 100px;
+  img{
+    margin-left: 20px;
+  }
+  .textitem{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-left: 21px;
+    margin-right: 12px;
+    width: 170px;
+  }
+  .removeicon{
+    opacity: 0.5;
+    margin-right: 20px;
+    cursor: pointer;
+    &:hover{
+      opacity: 1;
+    }
+  }
+}
+
+.cartTotallist{
+  margin-right: 40px;
+  margin-top: 550px;
+  
+  li{
+    display: flex;
+    align-items: flex-end;
+    margin-top: 20px;
+    margin-left: 0;
+  }
+  div{
+    flex: 1px;
+    height: 1px;
+    border-bottom: 1px dashed #dfdfdf;
+    position: relative;
+    top: -3px
+  }
+  button{
+  position: absolute;
+  width: 325px;
+  height: 55px;
+  right: 30px;
+  background: #9DD558;
+  border-radius: 18px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  border: none;
+  
+
+  &:hover {
+    background: lighten($color: #9DD558, $amount: 5%);
+  }
+  &:active {
+    background: darken($color: #9DD558, $amount: 10%);
+  }
+    img{
+      position: absolute;
+      right: 30px;
+      top: 22px;
+      transition: transform 0.2s ease-in-out;
+    }
+    &:hover{
+      transform: translateX(5px);
+    }
+  }
 }
