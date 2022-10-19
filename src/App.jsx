@@ -2,6 +2,29 @@ import Card from './components/Card';
 import Header from './components/Header';
 import Rightside from './components/Rightside';
 
+
+let arr = [
+  {
+    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
+    price: 240,
+    img: './img/sneakers1.jpg',
+  },
+  {
+    title: 'Мужские Кроссовки Nike Air Max 270',
+    price: 350,
+    img: './img/sneakers2.jpg',
+  },
+  {
+    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
+    price: 160,
+    img: './img/sneakers3.jpg',
+  },
+  {
+    title: 'Кроссовки Puma X Aka Boku Future Rider',
+    price: 220,
+    img: './img/sneakers4.jpg',
+  },
+]
 function App() {
   return (
     <div className="wrapper">
@@ -16,12 +39,9 @@ function App() {
             </div>
           </div>
         <div className="sneakers">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {arr.map((obj) => <Card title={obj.title} price={obj.price} img={obj.img} />
+        )}
+
         </div>
          </div>
     </div>

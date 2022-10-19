@@ -1,3 +1,5 @@
+import toUsd from "../helpers/converter";
+
 function Header() {
     return (
         <header className="itsheader">
@@ -12,7 +14,7 @@ function Header() {
         <ul className="headerRight">
             <li>
               <img width={18} height={18} src="/img/cart.svg" alt="cart" />
-              <span className="cost">140$</span>
+              <span className="cost">{toUsd.format(11)}</span>
             </li>
             <li>
               <img width={18} height={18} src="/img/heart.svg" alt="heart-icon" />
