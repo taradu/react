@@ -39,7 +39,12 @@ function App() {
             </div>
           </div>
         <div className="sneakers">
-        {arr.map((obj) => <Card title={obj.title} price={obj.price} img={obj.img} onClick={'It\'s click ;)'} />
+        {arr.map((obj) => 
+        <Card title={obj.title} 
+              price={obj.price} 
+              img={obj.img} 
+              onPlus={() => console.log('Натиснули на плюс')}
+              onFavorite={() => console.log('Натиснули на Вибране')} />
         )}
 
         </div>
