@@ -6,7 +6,7 @@ console.log(styles);
 function Card(props) {
   const [imgChange, setImg] = React.useState(false);
   const hundleImg = () => {
-    setImg(true);
+    setImg(!imgChange);
   }
 
     return (
