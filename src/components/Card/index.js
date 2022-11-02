@@ -1,9 +1,14 @@
-
+import React from 'react';
 import toUsd from '../../helpers/converter';
 import styles from './Card.module.scss';
 
 console.log(styles);
 function Card(props) {
+  const [imgChange, setImg] = React.useState(false);
+  const hundleImg = () => {
+    setImg(true);
+  }
+
     return (
         <div className={styles.card}>
           <div className={styles.favorite} onClick={props.onFavorite}>
@@ -16,8 +21,8 @@ function Card(props) {
               <span>ЦЕНА:</span>
               <b>{toUsd.format(props.price)}</b>
             </div>
-            <button className="button" onClick={props.onPlus}>
-              <img width={13} height={13} src="/img/Group 91.svg" alt="plus" />
+            <button className="button" onClick={hundleImg}>
+              <img  src={imgChange ? "/img/BtnChecked.svg" : "/img/BtnPlus.svg" } alt="plus" />
             </button>
           </div>
         </div>
