@@ -1,6 +1,7 @@
 import Card from './components/Card';
 import Header from './components/Header';
 import Rightside from './components/Rightside';
+import React from 'react';
 
 
 let arr = [
@@ -26,10 +27,12 @@ let arr = [
   },
 ]
 function App() {
+  const [openCart, setOpenCart] = React.useState(false);
+
   return (
     <div className="wrapper">
-        <Rightside />
-        <Header />
+        { openCart ? <Rightside onCloseCart={() => setOpenCart(false)}/> : null}
+        <Header onClickCart={() => setOpenCart(true)} />
         <div className="content">
           <div className="inputAll">
             <h1 className="allsneakers">Все кроссовки</h1>

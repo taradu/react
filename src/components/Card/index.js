@@ -8,11 +8,15 @@ function Card(props) {
   const hundleImg = () => {
     setImg(!imgChange);
   }
+  const [likeImg, setLikeImg] = React.useState(false);
+  const hundleLike = () => {
+    setLikeImg(!likeImg);
+  }
 
     return (
         <div className={styles.card}>
           <div className={styles.favorite} onClick={props.onFavorite}>
-            <img className="favorite-img" src="/img/favorite-unliked.svg" alt="unliked" />
+            <img className="favorite-img" onClick={hundleLike} src={likeImg ? "/img/favorite-liked.svg" : "/img/favorite-unliked.svg"} alt="unliked" />
           </div>
           <img width={133} height={112} src={props.img} alt="item" />
           <h5>{props.title}</h5>

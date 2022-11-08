@@ -120,6 +120,9 @@ h5 {
   z-index: 1;
   
 }
+.cost{
+  cursor: pointer;
+}
 .overlay{
   position: absolute;
   width: 385px;
@@ -173,7 +176,7 @@ h5 {
 
 .cartTotallist{
   margin-right: 40px;
-  margin-top: 550px;
+  margin-top: 250px;
   
   li{
     display: flex;

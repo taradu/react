@@ -1,6 +1,6 @@
 import toUsd from "../helpers/converter";
 
-function Header() {
+function Header(props) {
     return (
         <header className="itsheader">
         <div className="headerLeft">
@@ -11,10 +11,10 @@ function Header() {
           </div>
         </div>
           
-        <ul className="headerRight">
+        <ul onClick={props.onClickCart} className="headerRight" >
             <li>
               <img width={18} height={18} src="/img/cart.svg" alt="cart" />
-              <span className="cost">{toUsd.format(11)}</span>
+              <span  className="cost">{toUsd.format(11)}</span>
             </li>
             <li>
               <img width={18} height={18} src="/img/heart.svg" alt="heart-icon" />

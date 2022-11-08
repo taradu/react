@@ -1,8 +1,8 @@
-function Rightside() {
+function Rightside(props) {
     return (
-        <div style={{display: 'none'}} class='rightside'>
+        <div className='rightside'>
         <div className="overlay">
-          <h2>Корзина <img className="removeicon" src="/img/cartremove.svg" alt="remove" /></h2>
+          <h2>Корзина <img onClick={props.onCloseCart} className="removeicon" src="/img/cartremove.svg" alt="close" /></h2>
           <div className="items">
           <div className="cartitem">
             <img width={70} height={70} src="/img/sneakers2.jpg" alt="sneakers" />
