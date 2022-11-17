@@ -11,10 +11,10 @@ function Header(props) {
           </div>
         </div>
           
-        <ul onClick={props.onClickCart} className="headerRight" >
+        <ul  className="headerRight" >
             <li>
               <img width={18} height={18} src="/img/cart.svg" alt="cart" />
-              <span  className="cost">{toUsd.format(11)}</span>
+              <span onClick={props.onClickCart} className="cost">{toUsd.format(11)}</span>
             </li>
             <li>
               <img width={18} height={18} src="/img/heart.svg" alt="heart-icon" />

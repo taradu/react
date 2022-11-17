@@ -4,30 +4,20 @@ import Rightside from './components/Rightside';
 import React from 'react';
 
 
-let arr = [
-  {
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 240,
-    img: './img/sneakers1.jpg',
-  },
-  {
-    title: 'Мужские Кроссовки Nike Air Max 270',
-    price: 350,
-    img: './img/sneakers2.jpg',
-  },
-  {
-    title: 'Мужские Кроссовки Nike Blazer Mid Suede',
-    price: 160,
-    img: './img/sneakers3.jpg',
-  },
-  {
-    title: 'Кроссовки Puma X Aka Boku Future Rider',
-    price: 220,
-    img: './img/sneakers4.jpg',
-  },
-]
 function App() {
+  const [items, setItems] = React.useState([])
   const [openCart, setOpenCart] = React.useState(false);
+
+  React.useEffect(() => {
+    fetch('https://6376217c7e93bcb006c3d844.mockapi.io/items')
+    .then(res => {
+      return res.json();
+    })
+    .then((json) => {
+      setItems(json);
+    });
+  }, []);
+  
 
   return (
     <div className="wrapper">
@@ -42,10 +32,10 @@ function App() {
             </div>
           </div>
         <div className="sneakers">
-        {arr.map((obj) => 
+        {items.map((obj) => 
         <Card title={obj.title} 
               price={obj.price} 
-              img={obj.img} 
+              img={obj.imageURL} 
               onPlus={() => console.log('Натиснули на плюс')}
               onFavorite={() => console.log('Натиснули на Вибране')} />
         )}
