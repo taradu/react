@@ -1,25 +1,22 @@
-function Rightside(props) {
+import React from 'react';
+import toUsd from '../helpers/converter';
+
+function Rightside({onCloseCart, items = []}) {
     return (
         <div className='rightside'>
         <div className="overlay">
-          <h2>Корзина <img onClick={props.onCloseCart} className="removeicon" src="/img/cartremove.svg" alt="close" /></h2>
+          <h2>Корзина <img onClick={onCloseCart} className="removeicon" src="/img/cartremove.svg" alt="close" /></h2>
           <div className="items">
-          <div className="cartitem">
-            <img width={70} height={70} src="/img/sneakers2.jpg" alt="sneakers" />
-            <div className="textitem">
-              <p>Мужские Кроссовки Nike Air Max 270</p>
-              <b>230$</b>
+            {items.map((obj) => (
+              <div className="cartitem">
+              <img width={70} height={70} src={obj.img} alt="sneakers" />
+              <div className="textitem">
+                <p>{obj.title}</p>
+                <b>{toUsd.format(obj.price)}</b>
+              </div>
+              <img className="removeicon" src="/img/cartremove.svg" alt="remove" />
             </div>
-            <img className="removeicon" src="/img/cartremove.svg" alt="remove" />
-          </div>
-          <div className="cartitem">
-            <img width={70} height={70} src="/img/sneakers3.jpg" alt="sneakers" />
-            <div className="textitem">
-              <p>Мужские Кроссовки Nike Air Max 270</p>
-              <b>230$</b>
-            </div>
-            <img className="removeicon" src="/img/cartremove.svg" alt="remove" />
-          </div>
+            ))}
           
           </div>
           <div className="cartTotallist">

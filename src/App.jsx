@@ -6,6 +6,7 @@ import React from 'react';
 
 function App() {
   const [items, setItems] = React.useState([])
+  const [cartItems, setCartItems] = React.useState([])
   const [openCart, setOpenCart] = React.useState(false);
 
   React.useEffect(() => {
@@ -18,10 +19,13 @@ function App() {
     });
   }, []);
   
+  const onAddToCart = (obj) => {
+    setCartItems([...cartItems, obj]);
+  }
 
   return (
     <div className="wrapper">
-        { openCart ? <Rightside onCloseCart={() => setOpenCart(false)}/> : null}
+        { openCart ? <Rightside items={cartItems} onCloseCart={() => setOpenCart(false)}/> : null}
         <Header onClickCart={() => setOpenCart(true)} />
         <div className="content">
           <div className="inputAll">
@@ -32,11 +36,11 @@ function App() {
             </div>
           </div>
         <div className="sneakers">
-        {items.map((obj) => 
-        <Card title={obj.title} 
-              price={obj.price} 
-              img={obj.imageURL} 
-              onPlus={() => console.log('Натиснули на плюс')}
+        {items.map((item) => 
+        <Card title={item.title} 
+              price={item.price} 
+              img={item.imageURL} 
+              onPlus={(obj) => onAddToCart(obj)}
               onFavorite={() => console.log('Натиснули на Вибране')} />
         )}
 
