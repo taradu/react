@@ -1,7 +1,7 @@
 import React from 'react';
 import toUsd from '../helpers/converter';
 
-function Rightside({onCloseCart, items = []}) {
+function Rightside({onCloseCart, onRemove, items = []}) {
     return (
         <div className='rightside'>
         <div className="overlay">
@@ -14,7 +14,7 @@ function Rightside({onCloseCart, items = []}) {
                 <p>{obj.title}</p>
                 <b>{toUsd.format(obj.price)}</b>
               </div>
-              <img className="removeicon" src="/img/cartremove.svg" alt="remove" />
+              <img onClick={() => onRemove(obj.id)} className="removeicon" src="/img/cartremove.svg" alt="remove" />
             </div>
             ))}
           
