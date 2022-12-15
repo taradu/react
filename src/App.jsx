@@ -28,8 +28,8 @@ function App() {
     setCartItems((prev) => [...prev, obj]);
   }
   const onRemoveItem = (id) => {
-    // axios.delete(`https://6376217c7e93bcb006c3d844.mockapi.io/cartitems/${id}`);
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+    axios.delete(`https://6376217c7e93bcb006c3d844.mockapi.io/cartitems/${id}`);
+    setCartItems((prev) => prev.filter(item => item.id !== id));
   }
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
@@ -49,12 +49,12 @@ function App() {
           </div>
         <div className="sneakers">
         {items
-          .filter((item) => item.title.toLowerCase().includes(searchValue.toLocaleLowerCase())) 
+          .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())) 
           .map((item, index) => 
             <Card key={index}
               title={item.title} 
               price={item.price} 
-              img={item.imageURL} 
+              img={item.img} 
               onPlus={(obj) => onAddToCart(obj)}
               onFavorite={() => console.log('Натиснули на Вибране')} />
         )}
