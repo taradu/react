@@ -1,21 +1,21 @@
 import React from 'react';
 import toUsd from '../helpers/converter';
 
-function Rightside({onCloseCart, onRemove, items = []}) {
+function Rightside({onCloseCart, onRemove, index, items = []}) {
     return (
         <div className='rightside'>
         <div className="overlay">
           <h2>Корзина <img onClick={onCloseCart} className="removeicon" src="/img/cartremove.svg" alt="close" /></h2>
           <div className="items">
             {items.map((obj) => (
-              <div className="cartitem">
-              <img width={70} height={70} src={obj.img} alt="sneakers" />
+              <div className="cartitem" key={index}>
+                <img width={70} height={70} src={obj.img} alt="sneakers" />
               <div className="textitem">
                 <p>{obj.title}</p>
                 <b>{toUsd.format(obj.price)}</b>
               </div>
-              <img onClick={() => onRemove(obj.id)} className="removeicon" src="/img/cartremove.svg" alt="remove" />
-            </div>
+                <img onClick={() => onRemove(obj.id)} className="removeicon" src="/img/cartremove.svg" alt="remove" />
+              </div>
             ))}
           
           </div>

@@ -1,8 +1,10 @@
 import Card from './components/Card';
 import Header from './components/Header';
 import Rightside from './components/Rightside';
+import {Outlet, Route, Router, Routes} from 'react-router-dom';
 import React from 'react';
 import axios from 'axios'; 
+import Layout from './components/test';
 
 
 function App() {
@@ -38,6 +40,9 @@ function App() {
     <div className="wrapper">
         { openCart && <Rightside items={cartItems} onCloseCart={() => setOpenCart(false)} onRemove={onRemoveItem}/>}
         <Header onClickCart={() => setOpenCart(true)} />
+        <Routes>
+          <Route path="/test" element={<Layout />}> </Route>
+        </Routes>
         <div className="content">
           <div className="inputAll">
             <h1 className="allsneakers">{searchValue ? `Поиск по запросу: '${searchValue}'` : 'Все кроссовки'}</h1>
@@ -66,3 +71,4 @@ function App() {
 }
 
 export default App;
+
