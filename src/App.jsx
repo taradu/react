@@ -1,10 +1,12 @@
 import Card from './components/Card';
 import Header from './components/Header';
 import Rightside from './components/Rightside';
-import {Outlet, Route, Router, Routes} from 'react-router-dom';
+import {Link, Route, Routes} from 'react-router-dom';
 import React from 'react';
 import axios from 'axios'; 
-import Layout from './components/test';
+import Home from './components/Home';
+import Favorites from './components/Favorites';
+
 
 
 function App() {
@@ -37,35 +39,17 @@ function App() {
     setSearchValue(event.target.value);
   }
   return (
+    
     <div className="wrapper">
+      
         { openCart && <Rightside items={cartItems} onCloseCart={() => setOpenCart(false)} onRemove={onRemoveItem}/>}
+        
         <Header onClickCart={() => setOpenCart(true)} />
+        
         <Routes>
-          <Route path="/test" element={<Layout />}> </Route>
+          <Route path="/" element={<Home items={items} searchValue={searchValue} cartItems={cartItems} openCart={openCart} onChangeSearchInput={onChangeSearchInput} Card={Card} onAddToCart={onAddToCart} />}/>
+          <Route path="/favorites" element={<Favorites/>} />
         </Routes>
-        <div className="content">
-          <div className="inputAll">
-            <h1 className="allsneakers">{searchValue ? `Поиск по запросу: '${searchValue}'` : 'Все кроссовки'}</h1>
-            <div className="search-block">
-              <img src="/img/search.svg" alt="search" />
-              {searchValue && <img onClick={() => setSearchValue('')} className="clear" src="/img/cartremove.svg" alt="clear" />}
-              <input onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск..." />
-            </div>
-          </div>
-        <div className="sneakers">
-        {items
-          .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())) 
-          .map((item, index) => 
-            <Card key={index}
-              title={item.title} 
-              price={item.price} 
-              img={item.img} 
-              onPlus={(obj) => onAddToCart(obj)}
-              onFavorite={() => console.log('Натиснули на Вибране')} />
-        )}
-
-        </div>
-         </div>
     </div>
   );
 }
