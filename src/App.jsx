@@ -1,7 +1,7 @@
 import Card from './components/Card';
 import Header from './components/Header';
 import Rightside from './components/Rightside';
-import {Link, Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import React from 'react';
 import axios from 'axios'; 
 import Home from './components/Home';
@@ -12,6 +12,7 @@ import Favorites from './components/Favorites';
 function App() {
   const [items, setItems] = React.useState([])
   const [cartItems, setCartItems] = React.useState([])
+  const [favorites, setFavorites] = React.useState([])
   const [searchValue, setSearchValue] = React.useState('')
   const [openCart, setOpenCart] = React.useState(false);
 
@@ -24,12 +25,20 @@ function App() {
     .then((res) => {
       setCartItems(res.data);
     });
+    axios.get('https://6376217c7e93bcb006c3d844.mockapi.io/favorites')
+    .then((res) => {
+      setFavorites(res.data);
+    });
   }, []);
   
   const onAddToCart = (obj) => {
     axios.post('https://6376217c7e93bcb006c3d844.mockapi.io/cartitems', obj);
     // setCartItems([...cartItems, obj]);
     setCartItems((prev) => [...prev, obj]);
+  }
+  const onAddFavorite = (obj) => {
+    axios.post('https://6376217c7e93bcb006c3d844.mockapi.io/favorites', obj);
+    setFavorites((prev) => [...prev, obj]);
   }
   const onRemoveItem = (id) => {
     axios.delete(`https://6376217c7e93bcb006c3d844.mockapi.io/cartitems/${id}`);
@@ -47,8 +56,8 @@ function App() {
         <Header onClickCart={() => setOpenCart(true)} />
         
         <Routes>
-          <Route path="/" element={<Home items={items} searchValue={searchValue} cartItems={cartItems} openCart={openCart} onChangeSearchInput={onChangeSearchInput} Card={Card} onAddToCart={onAddToCart} />}/>
-          <Route path="/favorites" element={<Favorites/>} />
+          <Route path="/" element={<Home items={items} searchValue={searchValue} cartItems={cartItems} openCart={openCart} onChangeSearchInput={onChangeSearchInput} Card={Card} onAddToCart={onAddToCart} onFavorite={onAddFavorite} />}/>
+          <Route path="/favorites" element={<Favorites items={favorites}/>} />
         </Routes>
     </div>
   );

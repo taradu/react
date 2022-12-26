@@ -1,26 +1,27 @@
 import React from "react";
 function Home(props) {
-  const {items, searchValue, setSearchValue, onChangeSearchInput, Card, onAddToCart} = props;
+  // const {items, searchValue, setSearchValue, onChangeSearchInput, Card, onAddToCart, onFavorite} = props;
+  console.log(props);
     return (
         <div className="content">
           <div className="inputAll">
-            <h1 className="allsneakers">{searchValue ? `Поиск по запросу: '${searchValue}'` : 'Все кроссовки'}</h1>
+            <h1 className="allsneakers">{props.searchValue ? `Поиск по запросу: '${props.searchValue}'` : 'Все кроссовки'}</h1>
             <div className="search-block">
               <img src="/img/search.svg" alt="search" />
-              {searchValue && <img onClick={() => setSearchValue('')} className="clear" src="/img/cartremove.svg" alt="clear" />}
-              <input onChange={onChangeSearchInput} value={searchValue} placeholder="Поиск..." />
+              {props.searchValue && <img onClick={() => props.setSearchValue('')} className="clear" src="/img/cartremove.svg" alt="clear" />}
+              <input onChange={props.onChangeSearchInput} value={props.searchValue} placeholder={props.myProducts} />
             </div>
           </div>
         <div className="sneakers">
-        {items
-          .filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase())) 
+        {props.items
+          .filter((item) => item.title.toLowerCase().includes(props.searchValue.toLowerCase())) 
           .map((item, index) => 
-            <Card key={index}
+            <props.Card key={index}
               title={item.title} 
               price={item.price} 
               img={item.img} 
-              onPlus={(obj) => onAddToCart(obj)}
-              onFavorite={() => console.log('Натиснули на Вибране')} />
+              onPlus={(obj) => props.onAddToCart(obj)}
+              onFavorite={props.onFavorite} />
         )}
 
         </div>
