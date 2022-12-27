@@ -5,7 +5,8 @@ import styles from './Card.module.scss';
 console.log(styles);
 function Card(props) {
   const [imgChange, setImg] = React.useState(false);
-  const [likeImg, setLikeImg] = React.useState(false);
+  const [likeImg, setLikeImg] = React.useState(props.favorited);
+
   const hundleImg = () => {
     const newCartItem = {
       title: props.title,
@@ -15,14 +16,16 @@ function Card(props) {
     props.onPlus(newCartItem);
     setImg(!imgChange);
   }
-
-  const wishListHandler = () => {
+    const wishListHandler = () => {
     
     const addedToWishList = {
       title: props.title,
+      price: props.price,
+      img: props.img
     }
-    props.onFavorite(props.title, props.price, props.img)
+    props.onFavorite(addedToWishList)
     setLikeImg(!likeImg)
+    
   }
 
     return (

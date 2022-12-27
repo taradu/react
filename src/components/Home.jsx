@@ -1,7 +1,9 @@
 import React from "react";
+import Card from "./Card";
+
 function Home(props) {
   // const {items, searchValue, setSearchValue, onChangeSearchInput, Card, onAddToCart, onFavorite} = props;
-  console.log(props);
+  console.log(props, 'sdfhfgj');
     return (
         <div className="content">
           <div className="inputAll">
@@ -16,7 +18,7 @@ function Home(props) {
         {props.items
           .filter((item) => item.title.toLowerCase().includes(props.searchValue.toLowerCase())) 
           .map((item, index) => 
-            <props.Card key={index}
+            <Card key={index}
               title={item.title} 
               price={item.price} 
               img={item.img} 

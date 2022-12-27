@@ -57,7 +57,7 @@ function App() {
         
         <Routes>
           <Route path="/" element={<Home items={items} searchValue={searchValue} cartItems={cartItems} openCart={openCart} onChangeSearchInput={onChangeSearchInput} Card={Card} onAddToCart={onAddToCart} onFavorite={onAddFavorite} />}/>
-          <Route path="/favorites" element={<Favorites items={favorites}/>} />
+          <Route path="/favorites" element={<Favorites items={favorites} onFavorite={onAddFavorite}/>} />
         </Routes>
     </div>
   );
